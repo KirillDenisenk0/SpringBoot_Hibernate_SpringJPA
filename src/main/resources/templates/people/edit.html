@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UPDATE PERSON!</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/people/{id} (id =${person.getId()})}" th:object="${person}">
+    <!-- первое поле - метод, второе - куда отправляем,  третье - кому передаём данные  -->
+
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"> <!-- *{name} - берём имя из модели(объекта) person и вставляем вместо пустой строки -->
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <br/>
+    <label for="birthYear">Enter age: </label>
+    <input type="text" th:field="*{birthYear}" id="birthYear">
+    <div  style="color: red" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthYear}"></div>
+    <br/>
+
+    <input type="submit" value="Update!">
+</body>
+</html>

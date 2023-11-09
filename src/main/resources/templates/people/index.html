@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PEOPLE PAGE</title>
+</head>
+<body>
+  <div th:each="person: ${people}">  <!-- проходимся циклом foreach по БД и выводим всех person`ов  -->
+    <a th:href="@{/people/{id}(id=${person.getId()})}"
+       th:text="${person.getName() + ', ' + person.getBirthYear}" >user</a>
+  </div>
+
+<br>
+<hr/>  <!-- данный тег создаёт линию,которая отделяет список людей от кнопок снизу  -->
+
+<a  href="/people/new">Create new person</a>
+</body>
+</html>

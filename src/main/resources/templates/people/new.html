@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEW PERSON PAGE</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/people}" th:object="${person}">
+    <!-- первое поле - метод, второе - куда отправляем,  третье - кому передаём данные  -->
+
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div> <!-- данный тег показывается динамически при
+    соблюдении условия(получаем доступ
+    к полям и если есть ошибки показываем сообщение, которые были в аннотации) указываем через th:errors для какого поля  -->
+    <br/>
+    <label for="birthYear">Enter age: </label>
+    <input type="text" th:field="*{birthYear}" id="birthYear">
+    <div  style="color: red" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthYear}"></div>
+    <br/>
+
+    <input type="submit" value="Create!">
+</form>
+</body>
+</html>
